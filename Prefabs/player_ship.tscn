@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://btuldhsl2wg4g"]
+
+[ext_resource type="PackedScene" uid="uid://kv72dgutriqx" path="res://Prefabs/ship_base.tscn" id="1_y4cs2"]
+
+[node name="Player Ship" instance=ExtResource("1_y4cs2")]
+collision_layer = 1
+collision_mask = 14
+follow_cursor = true
+reload_time_msec = 300
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0

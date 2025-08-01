@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx7qci11mwjj1"]
+
+[ext_resource type="Texture2D" uid="uid://br0stmbqf6w18" path="res://Images/Healthbars/healthbar_back.png" id="2_1kgda"]
+
+[node name="Healthbar" type="Node2D"]
+
+[node name="back!" type="Sprite2D" parent="."]
+texture = ExtResource("2_1kgda")
+centered = false
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c20ct5vpp1iw1"]
+
+[ext_resource type="PackedScene" uid="uid://c22uh3lhjfrk" path="res://Prefabs/asteroid.tscn" id="2_7de0i"]
+[ext_resource type="PackedScene" uid="uid://db4qf4vrnac61" path="res://Prefabs/stars_background.tscn" id="4_eey4q"]
+[ext_resource type="PackedScene" uid="uid://btuldhsl2wg4g" path="res://Prefabs/player_ship.tscn" id="4_hnd5h"]
+
+[node name="Stage" type="Node2D"]
+
+[node name="Asteroid" parent="." instance=ExtResource("2_7de0i")]
+position = Vector2(647, 207)
+
+[node name="Stars Parallax" parent="." instance=ExtResource("4_eey4q")]
+
+[node name="Player Ship" parent="." instance=ExtResource("4_hnd5h")]
+position = Vector2(80, 120)
+collision_mask = 1
+
+[node name="Bullet Holder" type="Node2D" parent="."]

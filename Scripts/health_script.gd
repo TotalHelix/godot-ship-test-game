@@ -1,0 +1,100 @@
+extends Node2D
+
+# health logic
+@export var _max_health: int = 10
+var _current_health: int = _max_health 
+
+# colors logic
+@export_category("color thresholds")
+@export var high: float = 0.6
+@export var med: float = 0.3
+
+# the sprites holder. We'll set this up in _ready()
+var sprites_holder: Node2D = Node2D.new()
+var active_sprites: Dictionary = {}
+var current_set_name: String 
+var sprite_set: Dictionary
+
+# the healthbar sprites
+var health_sprites = {
+	"high": _get_healthbar_parts("Green"),
+	"med": _get_healthbar_parts("Yellow"),
+	"low": _get_healthbar_parts("Red")
+}
+
+
+func _ready() -> void:
+	# add the destroyable tag so that bullets know they're allowed to beat the shit out of us
+	self.add_to_group("destroyable")
+	
+	# set up the sprites holder
+	sprites_holder.name = "healthbar fill"
+	self.add_child(sprites_holder)
+
+## return a dict of left middle and right healthbar parts
+func _get_healthbar_parts(color: String) -> Dictionary:
+	# start a dict
+	var return_dict: Dictionary = {}
+	
+	# set the dict values
+	for part:String in ["left", "middle", "right"]:
+		return_dict[part] = load("res://Images/Healthbars/"+color+"/"+part+".png")
+	
+	# return the dict that we made
+	return return_dict
+
+## take damage, negative values heal. 
+## if the new health is equal to max health, current health will be set to max health
+## if new health <= 0, die. (see die() function)
+func take_damage(damage: int) -> void:
+	_current_health -= damage
+	
+	# if over max health
+	if _current_health > _max_health:
+		_current_health = _max_health
+		
+	# if no health left
+	elif _current_health <= 0:
+		die()
+	
+	# update the healthbar
+	update_healthbar()
+
+## update the healthbar
+func update_healthbar() -> void:
+	var health_frac: float = float(_current_health) / _max_health
+	var new_set_name: String
+	
+	print("current: ", _current_health)
+	print("max: ", _max_health)
+	print("frac: ", health_frac)
+	
+	# get the sprite set
+	if health_frac > high:	 new_set_name = "high"
+	elif health_frac > med:	 new_set_name = "med"
+	else:					 new_set_name = "low"
+	
+	# if we need to remake the healthbar because we passed a color threshold
+	if current_set_name != new_set_name:
+		# update the sprite info
+		current_set_name = new_set_name
+		sprite_set = health_sprites[new_set_name]
+		
+		# clear out the old sprites
+		for key in active_sprites:
+			active_sprites[key].queue_free()
+			
+		# make the healthbar parts
+		for part in ["left", "middle", "right"]:
+			var new_sprite: Sprite2D = Sprite2D.new()
+			new_sprite.centered = false
+			new_sprite.texture = sprite_set[part]
+			active_sprites[part] = new_sprite
+			sprites_holder.add_child(new_sprite)
+	
+	# now adjust the sprite positions
+	active_sprites["middle"].position.x = 10
+	
+## die
+func die() -> void:
+	print("dead")

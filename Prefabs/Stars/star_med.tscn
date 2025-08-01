@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://8tjrenl4sgej"]
+
+[ext_resource type="TileSet" uid="uid://lm4mp28nv72o" path="res://TileMaps/new_tile_set.tres" id="1_dbuc2"]
+
+[node name="TileMapLayer" type="TileMapLayer"]
+scale = Vector2(0.28, 0.28)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 3, 0, 6, 0, 3, 0, 0, 0)
+tile_set = ExtResource("1_dbuc2")
+y_sort_origin = 220
