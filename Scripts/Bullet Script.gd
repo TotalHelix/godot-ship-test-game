@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+# bullet damage
+var damage_to_take: int = 1  
+
 # the physics masks for player and enemy bullet
 #                    87654321
 var player_mask  = 0b00000110
@@ -11,11 +14,14 @@ var enemy_layer  = 0b00001000
 var player_rect = Rect2(228, 381, 9, 54)
 var enemy_rect  = Rect2(228, 451, 9, 54)
 
-## the direction that the bullet will go
+# the direction that the bullet will go
 var move_direction: Vector2
 
-## the bullet sprite
+# the bullet sprite
 var bullet_sprite: Sprite2D = Sprite2D.new()
+
+# the healthbar prefab
+var healthbar_prefab: PackedScene = preload("res://Prefabs/healthbar.tscn")
 
 enum bullets {enemy = 0, player = 1}
 @export var push_strength: int = 50
@@ -59,7 +65,25 @@ func _physics_process(delta: float) -> void:
 			hit.apply_impulse(impulse_vector)
 		
 		# damage
+		
+		# if the hit object can take damage
 		if hit.is_in_group("destroyable"):
-			hit.take_damage(1)
+			var health_controller: Node2D
+			
+			# see if the hit thing already has a healthbar
+			for child in hit.get_children():
+				if child.is_in_group("healthbar"):
+					health_controller = child
+					break
+			
+			# if the hit already has a health bar
+			if health_controller:
+				health_controller.take_damage(damage_to_take)
+
+			# if there isn't yet a healthbar
+			else:
+				var new_healthbar: Node2D = healthbar_prefab.instantiate()
+				new_healthbar.take_damage(damage_to_take)
+				hit.add_child(new_healthbar)
 		
 		self.queue_free()

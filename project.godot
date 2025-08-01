@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 [global_group]
 
 destroyable="Able to be destroyed. This is set by the health script and does not need to be manually added."
+healthbar="is a healthbar. Used by the bullet to quickly find where to send damage"
 
 [input]
 

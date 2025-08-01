@@ -11,6 +11,8 @@ var _current_health: int = _max_health
 
 # the sprites holder. We'll set this up in _ready()
 var sprites_holder: Node2D = Node2D.new()
+
+# a dictionary of the nodes that makes up the current helthbar
 var active_sprites: Dictionary = {}
 var current_set_name: String 
 var sprite_set: Dictionary
@@ -29,6 +31,7 @@ func _ready() -> void:
 	
 	# set up the sprites holder
 	sprites_holder.name = "healthbar fill"
+	sprites_holder.top_level = true
 	self.add_child(sprites_holder)
 
 ## return a dict of left middle and right healthbar parts
@@ -64,10 +67,6 @@ func take_damage(damage: int) -> void:
 func update_healthbar() -> void:
 	var health_frac: float = float(_current_health) / _max_health
 	var new_set_name: String
-	
-	print("current: ", _current_health)
-	print("max: ", _max_health)
-	print("frac: ", health_frac)
 	
 	# get the sprite set
 	if health_frac > high:	 new_set_name = "high"

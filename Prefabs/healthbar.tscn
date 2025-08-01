@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx7qci11mwjj1"]
+[gd_scene load_steps=3 format=3 uid="uid://ca84mgpryh7t"]
 
+[ext_resource type="Script" uid="uid://yr0jn17t32tv" path="res://Scripts/health_script.gd" id="1_y1cw4"]
 [ext_resource type="Texture2D" uid="uid://br0stmbqf6w18" path="res://Images/Healthbars/healthbar_back.png" id="2_1kgda"]
 
-[node name="Healthbar" type="Node2D"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" groups=["healthbar"]]
+remote_path = NodePath("back!")
+script = ExtResource("1_y1cw4")
 
 [node name="back!" type="Sprite2D" parent="."]
+top_level = true
 texture = ExtResource("2_1kgda")
 centered = false
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]

@@ -1,6 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1754069837
+::res://::1754075976
 export_presets.cfg::TextFile/TextFile::-1::1753891448::0::1::::<><><>0<>0<><>::
+README.md::TextFile::-1::1754070761::0::1::::<><><>0<>0<><>::
 ::res://Images/::1753976962
 sheet.svg::CompressedTexture2D/CompressedTexture2D::5087323465126349780::1753808304::1753808305::1::::<><><>0<>0<>31e0470938954da7e9d20c23c8c5e4ed<>res://.godot/imported/sheet.svg-fcdeaefc13da7f2641fb6bf1d3a4f93a.ctex::
 simpleSpace_tilesheet@2.png::CompressedTexture2D/CompressedTexture2D::6744520839936785542::1753469655::1753469655::1::::<><><>0<>0<>aa5222cdc756b4fc59194747c161d1c2<>res://.godot/imported/simpleSpace_tilesheet@2.png-6c0d5097bee95e1ef5a7c23d3ebf0371.ctex::
@@ -20,11 +21,11 @@ middle.png::CompressedTexture2D/CompressedTexture2D::2891331757328887013::175397
 right.png::CompressedTexture2D/CompressedTexture2D::3004249060084607284::1753977683::1753977713::1::::<><><>0<>0<>42fc1e5dc14bf9b3743a65d4c1b1f8eb<>res://.godot/imported/right.png-0182e0f820f694b87193a9253238bcbf.ctex::
 ::res://Physics Materials/::1753718403
 new_physics_material.tres::PhysicsMaterial/PhysicsMaterial::271858185575948639::1753718403::0::1::::<><><>0<>0<><>::
-::res://Prefabs/::1753986619
-asteroid.tscn::PackedScene::197791372745949944::1753986619::0::1::::<><><>0<>0<><>::uid://lm4mp28nv72o::::res://TileMaps/new_tile_set.tres<>uid://yr0jn17t32tv::::res://Scripts/health_script.gd
-bullet_base.tscn::PackedScene::4512395363950976682::1753982491::0::1::::<><><>0<>0<><>::uid://di35dpfeq8ekq::::res://Scripts/Bullet Script.gd
-healthbar.tscn::PackedScene::8840641047905982496::1753986619::0::1::::<><><>0<>0<><>::uid://br0stmbqf6w18::::res://Images/Healthbars/healthbar_back.png
-player_ship.tscn::PackedScene::3761969908205731512::1753982491::0::1::::<><><>0<>0<><>::uid://kv72dgutriqx::::res://Prefabs/ship_base.tscn
+::res://Prefabs/::1754075879
+asteroid.tscn::PackedScene::197791372745949944::1754075879::0::1::::<><><>0<>0<><>::uid://lm4mp28nv72o::::res://TileMaps/new_tile_set.tres
+bullet_base.tscn::PackedScene/PackedScene::4512395363950976682::1753982491::0::1::::<><><>0<>0<><>::uid://di35dpfeq8ekq::::res://Scripts/Bullet Script.gd
+healthbar.tscn::PackedScene::142433776314829855::1754075878::0::1::::<><><>0<>0<><>::uid://yr0jn17t32tv::::res://Scripts/health_script.gd<>uid://br0stmbqf6w18::::res://Images/Healthbars/healthbar_back.png
+player_ship.tscn::PackedScene/PackedScene::3761969908205731512::1753982491::0::1::::<><><>0<>0<><>::uid://kv72dgutriqx::::res://Prefabs/ship_base.tscn
 ship_base.tscn::PackedScene/PackedScene::747231697193191951::1753817795::0::1::::<><><>0<>0<><>::uid://dhnelymdt5vu0::::res://Scripts/ship_script.gd<>uid://lm4mp28nv72o::::res://TileMaps/new_tile_set.tres
 stars_background.tscn::PackedScene/PackedScene::7290299806846681840::1753801022::0::1::::<><><>0<>0<><>::uid://sc8fpcr6srqh::::res://Scripts/Stars Script.gd
 ::res://Prefabs/Stars/::1753797665
@@ -32,12 +33,12 @@ star_big.tscn::PackedScene/PackedScene::1686855792248820293::1753797634::0::1:::
 star_med.tscn::PackedScene/PackedScene::2356032059528601769::1753797648::0::1::::<><><>0<>0<><>::uid://lm4mp28nv72o::::res://TileMaps/new_tile_set.tres
 star_small.tscn::PackedScene/PackedScene::5398660892674059479::1753797659::0::1::::<><><>0<>0<><>::uid://lm4mp28nv72o::::res://TileMaps/new_tile_set.tres
 star_tiny.tscn::PackedScene/PackedScene::3818024984414787905::1753797665::0::1::::<><><>0<>0<><>::uid://lm4mp28nv72o::::res://TileMaps/new_tile_set.tres
-::res://Scripts/::1753986619
-Bullet Script.gd::GDScript::7780403040240643900::1753982491::0::1::::<>RigidBody2D<><>0<>0<><>::
-health_script.gd::GDScript::1721161390545022103::1753986619::0::1::::<>Node2D<><>0<>0<><>::
+::res://Scripts/::1754075471
+Bullet Script.gd::GDScript::7780403040240643900::1754074767::0::1::::<>RigidBody2D<><>0<>0<><>::
+health_script.gd::GDScript::1721161390545022103::1754075471::0::1::::<>Node2D<><>0<>0<><>::
 ship_script.gd::GDScript/GDScript::7677684658313283861::1753891300::0::1::::<>RigidBody2D<><>0<>0<><>::
 Stars Script.gd::GDScript/GDScript::1269541322477937547::1753805285::0::1::::<>Node2D<><>0<>0<><>::
-::res://Stages/::1753986619
-stage.tscn::PackedScene::6719706562378302214::1753986619::0::1::::<><><>0<>0<><>::uid://c22uh3lhjfrk::::res://Prefabs/asteroid.tscn<>uid://db4qf4vrnac61::::res://Prefabs/stars_background.tscn<>uid://btuldhsl2wg4g::::res://Prefabs/player_ship.tscn
-::res://TileMaps/::1753976419
-new_tile_set.tres::TileSet::798632866461735804::1753976419::0::1::::<><><>0<>0<><>::uid://c3ddjjn8gbqli::::res://Images/simpleSpace_tilesheet@2.png
+::res://Stages/::1754075878
+stage.tscn::PackedScene::6719706562378302214::1754075878::0::1::::<><><>0<>0<><>::uid://c22uh3lhjfrk::::res://Prefabs/asteroid.tscn<>uid://db4qf4vrnac61::::res://Prefabs/stars_background.tscn<>uid://btuldhsl2wg4g::::res://Prefabs/player_ship.tscn
+::res://TileMaps/::1754072187
+new_tile_set.tres::TileSet::798632866461735804::1754072187::0::1::::<><><>0<>0<><>::uid://c3ddjjn8gbqli::::res://Images/simpleSpace_tilesheet@2.png
