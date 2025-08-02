@@ -1,0 +1,6 @@
+res://Stages/stage.tscn
+res://TileMaps/new_tile_set.tres
+res://Prefabs/healthbar.tscn
+res://Prefabs/asteroid.tscn
+res://Scripts/health_script.gd
+res://Scripts/Bullet Script.gd

@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://yr0jn17t32tv" path="res://Scripts/health_script.gd" id="1_y1cw4"]
 [ext_resource type="Texture2D" uid="uid://br0stmbqf6w18" path="res://Images/Healthbars/healthbar_back.png" id="2_1kgda"]
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" groups=["healthbar"]]
-remote_path = NodePath("back!")
+[node name="Healthbar" type="Node2D" groups=["healthbar"]]
 script = ExtResource("1_y1cw4")
 
-[node name="back!" type="Sprite2D" parent="."]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../back!")
+update_rotation = false
+
+[node name="back!" type="Sprite2D" parent="." groups=["healthbar back"]]
 top_level = true
 texture = ExtResource("2_1kgda")
 centered = false

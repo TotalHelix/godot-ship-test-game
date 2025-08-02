@@ -78,12 +78,13 @@ func _physics_process(delta: float) -> void:
 			
 			# if the hit already has a health bar
 			if health_controller:
+				print("there's already a healthbasr controller")
 				health_controller.take_damage(damage_to_take)
 
 			# if there isn't yet a healthbar
 			else:
 				var new_healthbar: Node2D = healthbar_prefab.instantiate()
-				new_healthbar.take_damage(damage_to_take)
 				hit.add_child(new_healthbar)
+				new_healthbar.take_damage(damage_to_take)
 		
 		self.queue_free()
