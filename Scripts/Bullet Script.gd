@@ -23,6 +23,9 @@ var bullet_sprite: Sprite2D = Sprite2D.new()
 # the healthbar prefab
 var healthbar_prefab: PackedScene = preload("res://Prefabs/healthbar.tscn")
 
+# the added velocity of the ship
+var _bullet_push: Vector2 = Vector2(0, 0)
+
 enum bullets {enemy = 0, player = 1}
 @export var push_strength: int = 50
 @export var bullet_speed: int = 1800
@@ -50,11 +53,12 @@ func _enter_tree() -> void:
 	bullet_sprite.texture = preload("res://Images/sheet.svg")
 	bullet_sprite.rotation = 90 * (PI/180)
 	bullet_sprite.region_enabled = true
+	bullet_sprite.z_index = -1
 	self.add_child(bullet_sprite)
 
 func _physics_process(delta: float) -> void:
 	# get the collision info
-	var collision_info = self.move_and_collide(move_direction * delta * bullet_speed)
+	var collision_info = self.move_and_collide(move_direction * delta * bullet_speed + _bullet_push * delta)
 	
 	if collision_info:
 		var hit: Node2D = collision_info.get_collider()
@@ -62,6 +66,7 @@ func _physics_process(delta: float) -> void:
 		# knockback
 		if hit is RigidBody2D:
 			var impulse_vector: Vector2 = move_direction * push_strength
+			print("move_direction * push_strength: ", move_direction * push_strength)
 			hit.apply_impulse(impulse_vector)
 		
 		# damage
@@ -88,3 +93,8 @@ func _physics_process(delta: float) -> void:
 				new_healthbar.take_damage(damage_to_take)
 		
 		self.queue_free()
+		
+## a little function that the ship can call when creating a bullet
+## to add the ship velocity to the bullet
+func push_bullet(push_direction: Vector2) -> void:
+	_bullet_push = push_direction

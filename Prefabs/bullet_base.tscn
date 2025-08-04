@@ -10,7 +10,7 @@ collision_layer = 0
 collision_mask = 0
 lock_rotation = true
 script = ExtResource("1_m4f65")
-push_strength = 18125
+push_strength = 5000
 bullet_speed = 1835
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

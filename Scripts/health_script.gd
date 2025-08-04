@@ -148,7 +148,6 @@ func update_healthbar() -> void:
 	# the right half of the health bar
 	active_sprites["right"].position = Vector2(midsectoin + corner_width, 0) + sprite_offset
 	
-	
 ## die
 func die() -> void:
-	print("dead")
+	self.get_parent().queue_free()
