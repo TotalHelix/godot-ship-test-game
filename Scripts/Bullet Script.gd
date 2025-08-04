@@ -44,9 +44,22 @@ enum bullets {enemy = 0, player = 1}
 			self.collision_layer = enemy_layer
 			self.collision_mask = enemy_mask
 			bullet_sprite.region_rect = enemy_rect
-			
+
+@export_group("Despawn")
+
+## the time in seconds that the bullet begins to disappear.
+@export var despawn_begin: int = 20
+
+## the time in seconds that the bullet will be completely gone after it starts to despawn.
+@export var despawn_length: int = 3
+
+# the timestamp when the script begins. Used to calculate bullet despawn.
+var time_since_start: float = 0
+
 
 func _enter_tree() -> void:
+	
+	# set the move direction
 	move_direction = Vector2(cos(self.rotation), sin(self.rotation))
 	
 	# adjust the bullet sprite
@@ -56,11 +69,28 @@ func _enter_tree() -> void:
 	bullet_sprite.z_index = -1
 	self.add_child(bullet_sprite)
 
+func _process(delta: float) -> void:
+	
+	# ###########################
+	# despawn the bullet
+	# ###########################
+	
+	# step up the timer
+	time_since_start += delta
+	
+	# if we have passed the despawn begin threshold
+	if time_since_start >= despawn_begin:
+		bullet_sprite.modulate.a = 1 - (time_since_start - despawn_begin) / (despawn_length)
+		
+		if time_since_start >= despawn_begin + despawn_length:
+			self.queue_free()
+
 func _physics_process(delta: float) -> void:
 	# get the collision info
 	var collision_info = self.move_and_collide(move_direction * delta * bullet_speed + _bullet_push * delta)
 	
 	if collision_info:
+		print("hit")
 		var hit: Node2D = collision_info.get_collider()
 		
 		# knockback

@@ -27,16 +27,18 @@ func _input(event: InputEvent) -> void:
 		fire_gun = false
 
 func _physics_process(delta: float) -> void:
+	var collision: KinematicCollision2D = self.move_and_collide(self.linear_velocity * delta)
+	if collision: print("hit a thing! ", collision)
+	
 	# now push the ship in that direction
 	var direction: Vector2 = Vector2(cos(self.rotation), sin(self.rotation))
-	self.apply_central_force(direction * self.speed)
+	# self.apply_central_force(direction * self.speed)
+	self.linear_velocity += direction * self.speed * delta
 	
 	# Look in a direction
 	# for player ships this is the mouse pointer
 	if self.follow_cursor:
 		self.look_at(get_global_mouse_position())
-	
-	# now add some drag in the oposite direction as velocity
 
 
 func _process(delta: float) -> void:
@@ -46,7 +48,7 @@ func _process(delta: float) -> void:
 		time_since_last_shot = 0
 		
 		# make a new bullet
-		var new_bullet = bullet_prefab.instantiate()
+		var new_bullet: RigidBody2D = bullet_prefab.instantiate()
 		new_bullet.bullet_type = 1
 		new_bullet.position = self.position
 		new_bullet.rotation = self.rotation
