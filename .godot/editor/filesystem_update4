@@ -1,9 +1,6 @@
 res://Stages/stage.tscn
 res://TileMaps/new_tile_set.tres
 res://Prefabs/healthbar.tscn
-res://Prefabs/asteroid.tscn
 res://Prefabs/player_ship.tscn
 res://Prefabs/ship_base.tscn
-res://Scripts/ship_script.gd
-res://Scripts/Bullet Script.gd
 res://Prefabs/bullet_base.tscn
